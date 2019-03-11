@@ -24,17 +24,19 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            dataGridViewAlarmMessage.DataContext = GlobalVars.alarmsMessagesList.AlarmMessagesDS;
+            dataGridViewAlarmMessage.ItemsSource = GlobalVars.AlarmMessagesDS;
             for (int i=1; i<10; i++)
             {
-                GlobalVars.AlarmMessage am = new GlobalVars.AlarmMessage();
-                am.AlarmFlag = true;
-                am.AlarmMessages = "测试" + i.ToString();
-                am.TimeStamp = DateTime.Now;
-                am.MachineNo = i.ToString();
+                AlarmMessage am = new AlarmMessage
+                {
+                    AlarmFlag = true,
+                    AlarmMessages = "测试" + i.ToString(),
+                    TimeStamp = DateTime.Now,
+                    MachineNo = i.ToString()
+                };
                 GlobalVars.alarmMessages.Add(am);
             }
-            ObservableCollection<GlobalVars.AlarmMessage> alarmMessagesDS = new ObservableCollection<GlobalVars.AlarmMessage>(GlobalVars.alarmMessages);
+            //ObservableCollection<AlarmMessage> alarmMessagesDS = new ObservableCollection<AlarmMessage>();
             //alarmMessagesDS.Clear();
             //List<GlobalVars.AlarmMessage> alarmMessagesDS = new List<GlobalVars.AlarmMessage>();
             foreach (var item in GlobalVars.alarmMessages)
@@ -42,15 +44,14 @@ namespace WpfApp1
                 if (item.AlarmFlag)
                 {
                     //GlobalVars.AlarmMessage alarmMessage = new GlobalVars.AlarmMessage();
-                    alarmMessagesDS.Add(item);
+                    GlobalVars.AlarmMessagesDS.Add(item);
                 }
             }
             //alarmMessagesDS.Sort((a, b) => b.TimeStamp.CompareTo(a.TimeStamp));
             //alarmMessagesDS.ForEach(x=>)
-            GlobalVars.alarmsMessagesList.AlarmMessagesDS = alarmMessagesDS;
-
-            
-
+            //GlobalVars.AlarmMessagesDS = alarmMessagesDS;
+            //dataGridViewAlarmMessage.DataContext = GlobalVars.AlarmMessagesDS;
+            //dataGridViewAlarmMessage.ItemsSource = GlobalVars.AlarmMessagesDS;
         }
     }
 }

@@ -10,8 +10,8 @@ namespace WpfApp1
 {
     public class AlarmsMessagesList : INotifyPropertyChanged
     {
-        private ObservableCollection<GlobalVars.AlarmMessage> _alarmMessagesDS = new ObservableCollection<GlobalVars.AlarmMessage>();
-        public ObservableCollection<GlobalVars.AlarmMessage> AlarmMessagesDS
+        private ObservableCollection<AlarmMessage> _alarmMessagesDS = new ObservableCollection<AlarmMessage>();
+        public ObservableCollection<AlarmMessage> AlarmMessagesDS
         {
             get { return _alarmMessagesDS; }
             set
