@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,30 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            for(int i=1; i<10; i++)
+            {
+                GlobalVars.AlarmMessage am = new GlobalVars.AlarmMessage();
+                am.AlarmFlag = true;
+                am.AlarmMessages = "测试" + i.ToString();
+                am.TimeStamp = DateTime.Now;
+                am.MachineNo = i.ToString();
+                GlobalVars.alarmMessages.Add(am);
+            }
+            ObservableCollection<GlobalVars.AlarmMessage> alarmMessagesDS = new ObservableCollection<GlobalVars.AlarmMessage>(GlobalVars.alarmMessages);
+            //alarmMessagesDS.Clear();
+            //List<GlobalVars.AlarmMessage> alarmMessagesDS = new List<GlobalVars.AlarmMessage>();
+            foreach (var item in GlobalVars.alarmMessages)
+            {
+                if (item.AlarmFlag)
+                {
+                    //GlobalVars.AlarmMessage alarmMessage = new GlobalVars.AlarmMessage();
+                    alarmMessagesDS.Add(item);
+                }
+            }
+            //alarmMessagesDS.Sort((a, b) => b.TimeStamp.CompareTo(a.TimeStamp));
+            //alarmMessagesDS.ForEach(x=>)
+            GlobalVars.alarmsMessagesList.AlarmMessagesDS = alarmMessagesDS;
+
         }
     }
 }

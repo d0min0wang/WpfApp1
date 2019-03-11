@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid Name="dataGridViewAlarmMessage" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="8" BorderThickness="1" Margin="10" 
+                      ItemsSource="{Binding GlobalVars.alarmsMessagesList.AlarmMessagesDS}"
+                      FontSize="14" AutoGenerateColumns="False" GridLinesVisibility="None" BorderBrush="DarkGray" IsReadOnly="True" RowHeaderWidth="0">
+            <DataGrid.Background>
+                <SolidColorBrush Color="#FFF0F0F0" Opacity="0"/>
+            </DataGrid.Background>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="机器编号" Binding="{Binding MachineNo}" Width="100" ></DataGridTextColumn>
+                <DataGridTextColumn Header="报警信息" Binding="{Binding AlarmMessages}" Width="600" ></DataGridTextColumn>
+                <DataGridTextColumn Header="报警时间" Binding="{Binding TimeStamp,StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}'}" Width="200"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="Padding" Value="2"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
     </Grid>
 </Window>
