@@ -24,7 +24,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            
+            dataGridViewAlarmMessage.DataContext = GlobalVars.alarmsMessagesList.AlarmMessagesDS;
             for (int i=1; i<10; i++)
             {
                 GlobalVars.AlarmMessage am = new GlobalVars.AlarmMessage();
@@ -49,7 +49,7 @@ namespace WpfApp1
             //alarmMessagesDS.ForEach(x=>)
             GlobalVars.alarmsMessagesList.AlarmMessagesDS = alarmMessagesDS;
 
-            dataGridViewAlarmMessage.DataContext = GlobalVars.alarmMessages;
+            
 
         }
     }
