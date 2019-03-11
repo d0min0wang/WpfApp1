@@ -24,7 +24,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            for(int i=1; i<10; i++)
+            
+            for (int i=1; i<10; i++)
             {
                 GlobalVars.AlarmMessage am = new GlobalVars.AlarmMessage();
                 am.AlarmFlag = true;
@@ -47,6 +48,8 @@ namespace WpfApp1
             //alarmMessagesDS.Sort((a, b) => b.TimeStamp.CompareTo(a.TimeStamp));
             //alarmMessagesDS.ForEach(x=>)
             GlobalVars.alarmsMessagesList.AlarmMessagesDS = alarmMessagesDS;
+
+            dataGridViewAlarmMessage.DataContext = GlobalVars.alarmMessages;
 
         }
     }
